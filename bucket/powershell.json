@@ -33,15 +33,24 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.zip",
-                "hash": "PowerShell-$version-win-x64\\.zip\\n([a-zA-Z0-9]{64})"
+                "hash": {
+                    "url":"https://github.com/PowerShell/PowerShell/releases",
+                    "find":"PowerShell-$version-win-x64\\.zip\\n([a-zA-Z0-9]{64})"
+                }
             },
             "32bit": {
                 "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip",
-                "hash": "PowerShell-$version-win-x86\\.zip\\n([a-zA-Z0-9]{64})"
+                "hash": {
+                    "url":"https://github.com/PowerShell/PowerShell/releases",
+                    "find":"PowerShell-$version-win-x86\\.zip\\n([a-zA-Z0-9]{64})"
+                }
             },
             "arm64": {
                 "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-arm64.zip",
-                "hash": "PowerShell-$version-win-arm64\\.zip\\n([a-zA-Z0-9]{64})"
+                "hash": {
+                    "url":"https://github.com/PowerShell/PowerShell/releases",
+                    "find":"PowerShell-$version-win-arm64\\.zip\\n([a-zA-Z0-9]{64})"
+                }
             }
         }
     }
