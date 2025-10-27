@@ -1,5 +1,5 @@
 {
-    "##": "This file is a template. Fill the blanks and add or remove fields as necessary.",
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
     "version": "7.5.4",
     "description": "a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework",
     "homepage": "https://github.com/PowerShell/PowerShell",

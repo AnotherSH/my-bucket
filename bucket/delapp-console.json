@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "1.0.0",
+    "description": "A simple console tool to delete files and folders in Windows.",
+    "homepage": "https://github.com/AnotherSH/DelappConsole",
+    "url": "https://github.com/AnotherSH/DelappConsole/releases/download/1.0.0/DelappConsole.7z",
+    "hash": "a2c88e24978251b4751c3e226134b143bee19507a0b5ac5e2b55a0b5d344363a",
+    "bin": "DelappConsole.exe",
+    "license": "MIT",
+    "env_add_path": ".",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/AnotherSH/DelappConsole/releases/download/$version/DelappConsole.7z",
+        "hash": {
+            "url": "https://github.com/AnotherSH/DelappConsole/releases",
+            "find": "SHA256:([A-Za-z0-9]{64})"
+        }
+    }
+}

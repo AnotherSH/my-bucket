@@ -1,0 +1,49 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "83e",
+    "homepage": "https://pinyin.sogou.com/zhihui/",
+    "license": "Freeware",
+    "url": "https://ime-sec.gtimg.com/202510252128/f14aeab6079a0241db180e71946e427b/pc/dl/index/1611214041/sogou_pinyin_zhihui_83e.exe#/sogou_pinyin_zhihui.exe",
+    "hash": "0",
+    "pre_install":[
+        "$scoopPath = Split-Path (Split-Path (Get-Command scoop).Source -Parent) -Parent",
+        "$checkverPath = Join-Path -Path $scoopPath -ChildPath \"apps/scoop/current/bin/checkver.ps1\"",
+        "$manifestPath = Join-Path -Path $scoopPath -ChildPath \"buckets/my-bucket/sogou.json\"",
+        "& $checkverPath $manifestPath -f"
+    ],
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\sogou_pinyin_zhihui.exe\" -ArgumentList \"/D=$dir\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item \"$dir\\sogou_pinyin_zhihui.exe\""
+        ]
+    },
+    "post_install": "Stop-Process -Name \"SogouImeLoader\" -Force -ErrorAction SilentlyContinue",
+    "pre_uninstall": [
+        "if(Get-Command Tu -ErrorAction SilentlyContinue){",
+        "$process = Start-Process Tu -Verb RunAs -PassThru}",
+        "elseif(Get-Command geek -ErrorAction SilentlyContinue){",
+        "$process = Start-Process geek -Verb RunAs -PassThru}",
+        "$ppid = $process.Id",
+        "Write-Host '已启动卸载软件： '$process.Name' , 等待其关闭...'",
+        "Wait-Process -Id $ppid",
+        "Write-Host '卸载软件： '$process.Name' 已关闭 ， 继续关闭搜狗残留关进程...'",
+        "Stop-Process -Name \"SGPicFaceTool\" -Force -ErrorAction SilentlyContinue",
+        "Stop-Process -Name \"SGTool\" -Force -ErrorAction SilentlyContinue",
+        "Stop-Process -Name \"SogouCloud\" -Force -ErrorAction SilentlyContinue",
+        "Stop-Process -Name \"SogouImeLoader\" -Force -ErrorAction SilentlyContinue",
+        "Stop-Process -Name \"SogouImeBroker\" -Force -ErrorAction SilentlyContinue",
+        "if(Get-Command DelappConsole -ErrorAction SilentlyContinue){",
+        "DelappConsole $dir}"
+    ],
+    "checkver": {
+        "regex": "https:\\/\\/ime-sec\\.gtimg\\.com\\/(?<date>[\\d]{12})\\/(?<hash>[0-9A-Za-z]{32})\\/pc\\/dl\\/index\\/(?<timestamp>[\\d]{10,11})\\/sogou_pinyin_zhihui_(?<version>[\\d]+[0-9A-Za-z]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://ime-sec.gtimg.com/$matchDate/$matchHash/pc/dl/index/$matchTimestamp/sogou_pinyin_zhihui_$matchVersion.exe#/sogou_pinyin_zhihui.exe",
+        "hash":{}
+    }
+}
