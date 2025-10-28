@@ -3,16 +3,14 @@
     "version": "83e",
     "homepage": "https://pinyin.sogou.com/zhihui/",
     "license": "Freeware",
-    "url":"https://pinyin.sogou.com/zhihui/#/dl.txt",
+    "notes":"这里的pre_install应在下载url之前执行（.\bin\checkver.ps1 sogou -f）, 实际 pre_install是在url下载之后执行的，所以此清单文件无效。要使用此清单文件必须得先执行.\bin\checkver.ps1 sogou -f 再执行 scoop install sogou 才能成功。",
+    "url": "https://ime-sec.gtimg.com/202510252128/f14aeab6079a0241db180e71946e427b/pc/dl/index/1611214041/sogou_pinyin_zhihui_83e.exe#/sogou_pinyin_zhihui.exe",
+    "hash": "0000000000000000000000000000000000000000000000000000000000000000",
     "pre_install":[
-        "Remove-Item $dir/dl.txt",
-        "$url = 'https://pinyin.sogou.com/zhihui/'",
-        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
-        "$response = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction Stop",
-        "$htmlContent = $response.Content",
-        "$pattern = \"https:\\/\\/ime-sec\\.gtimg\\.com\\/(?<date>[\\d]{12})\\/(?<hash>[0-9A-Za-z]{32})\\/pc\\/dl\\/index\\/(?<timestamp>[\\d]{10,11})\\/sogou_pinyin_zhihui_(?<version>[\\d]+[0-9A-Za-z]+)\\.exe\"",
-        "$downloadUrl = ($htmlContent | Select-String -Pattern $pattern).Matches.Groups[0].Value",
-        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/sogou_pinyin_zhihui.exe\""
+        "$scoopPath = Split-Path (Split-Path (Get-Command scoop).Source -Parent) -Parent",
+        "$checkverPath = Join-Path -Path $scoopPath -ChildPath \"apps/scoop/current/bin/checkver.ps1\"",
+        "$manifestPath = Join-Path -Path $scoopPath -ChildPath \"buckets/my-bucket/sogou.json\"",
+        "& $checkverPath $manifestPath -f"
     ],
     "installer": {
         "script": [
@@ -43,6 +41,10 @@
         "DelappConsole $dir}"
     ],
     "checkver": {
-        "regex": "https:\\/\\/ime-sec\\.gtimg\\.com\\/(?<date>[\\d]{12})\\/(?<hash>[0-9A-Za-z]{32})\\/pc\\/dl\\/index\\/(?<timestamp>[\\d]{10,11})\\/sogou_pinyin_zhihui_(?<version>[\\d]+[0-9A-Za-z]+)\\.exe"
+        "regex": "https:\\/\\/ime-sec\\.gtimg\\.com\\/(?<date>[\\d]{12})\\/(?<hash>[0-9A-Za-z]{32})\\/pc\\/dl\\/index\\/(?<timestamp>[\\d]{10,11})\\/sogou_pinyin_zhihui_(?<version>[\\d]+[0-9A-Za-z]+)\\.exe",
+    },
+    "autoupdate": {
+        "url": "https://ime-sec.gtimg.com/$matchDate/$matchHash/pc/dl/index/$matchTimestamp/sogou_pinyin_zhihui_$matchVersion.exe#/sogou_pinyin_zhihui.exe",
+        "hash":{}
     }
 }
