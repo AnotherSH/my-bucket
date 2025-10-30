@@ -46,6 +46,6 @@
         "regex": "https:\\/\\/ime-sec\\.gtimg\\.com\\/(?<date>[\\d]{12})\\/(?<hash>[0-9A-Za-z]{32})\\/pc\\/dl\\/index\\/(?<timestamp>[\\d]{10,11})\\/sogou_pinyin_zhihui_(?<version>[\\d]+[0-9A-Za-z]+)\\.exe"
     },
     "autoupdate": {
-        
+        "url": "https://pinyin.sogou.com/zhihui/#/dl.txt"
     }
 }

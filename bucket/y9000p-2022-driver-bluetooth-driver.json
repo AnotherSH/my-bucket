@@ -6,7 +6,7 @@
     "license": "MIT",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "pre_install": [
-        "$json = Get-Content -Path '$dir/dl.json' -Raw | ConvertFrom-Json",
+        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '蓝牙' }).drivelist | Where-Object { $_.DriverName -eq 'BlueTooth Driver 蓝牙驱动' })",
         "$downloadUrl = $driverJson.FilePath",
         "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
@@ -29,6 +29,6 @@
         "replace": "${1}-${2}-${3}"
     },
     "autoupdate": {
-
+        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
     }
 }
