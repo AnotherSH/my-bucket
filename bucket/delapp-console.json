@@ -4,7 +4,7 @@
     "description": "A simple console tool to delete files and folders in Windows.",
     "homepage": "https://github.com/AnotherSH/DelappConsole",
     "url": "https://github.com/AnotherSH/DelappConsole/releases/download/1.0.0/DelappConsole.7z",
-    "hash": "a2c88e24978251b4751c3e226134b143bee19507a0b5ac5e2b55a0b5d344363a",
+    "hash": "fcc1cd7614a17313606051723e4ec6d8088015a07ab18a0779c67ffaf8133f50",
     "bin": "DelappConsole.exe",
     "license": "MIT",
     "env_add_path": ".",

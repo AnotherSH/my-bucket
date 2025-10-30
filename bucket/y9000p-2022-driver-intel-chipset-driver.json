@@ -1,27 +1,29 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
     "version": "1.0.0",
-    "description": "英特尔芯片组驱动",
+    "description": "蓝牙驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "MIT",
-    "url": "https://newdriverdl1.lenovo.com.cn/newlenovo/alldriversupload/108244/chipset-DYY5037F7P4R5AD0.exe?token=9CpJ_L4KqTUybHCbTI9UyvSsulQmfHmvH85xd5CD4-2n3v2xUvbjycO79M14UNCi#/chipset.exe",
+    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
+    "pre_install":[
+        "$json = Get-Content -Path '$dir/dl.json' -Raw | ConvertFrom-Json",
+        "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '蓝牙' }).drivelist | Where-Object { $_.DriverName -eq 'BlueTooth Driver 蓝牙驱动' })",
+        "downloadUrl = $driverJson.FilePath",
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
+        "Remove-Item $dir/dl.json"
+    ],
     "installer": {
         "script": [
-            "$process = Start-Process -FilePath $dir/chipset.exe -ArgumentList /s -Wait -PassThru -NoNewWindow",
-            "if ($process.ExitCode -eq 0) {",
-                "Write-Host \"安装成功完成\"",
-            "} else {",
-                "Write-Error \"安装失败，退出代码: $($process.ExitCode)\"",
-                "exit $process.ExitCode}"
+            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/D=$dir\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'"
         ],
         "keep": false
     },
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/AnotherSH/DelappConsole/releases/download/$version/DelappConsole.7z",
-        "hash": {
-            "url": "https://github.com/AnotherSH/DelappConsole/releases",
-            "find": "SHA256:([A-Za-z0-9]{64})"
-        }
+    "checkver": {
+        "url" : "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043",
+        "jsonpath": "$.data.partList[?(@.PartName=='蓝牙')].drivelist[?(@.DriverName='蓝牙驱动')].Version"
     }
 }

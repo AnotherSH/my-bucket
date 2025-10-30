@@ -1,20 +1,16 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "1.0.0",
+    "version": "23.60.0.1-1.9.1051.3004-1.9.1051.3009",
     "description": "蓝牙驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "MIT",
-    "url": "https://newsupport.lenovo.com.cn/#/dl.txt",
-    "pre_install":[
-        "Remove-Item $dir/dl.txt",
-        "$url = 'https://newsupport.lenovo.com.cn/driveList.html?fromsource=driveList&selname=Legion%20y9000p%20IAH7H(2022%E6%AC%BE)'",
-        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
-        "$response = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction Stop",
-        "$htmlContent = $response.Content",
-
-        "$pattern = \"Blue[Tt]ooth Driver 蓝牙驱动[\\s\\S]*?版本：(?<version>\\S+)<\\/span>[\\s\\S]+?data-url=\"(?<downloadUrl>\\S+)\"\"",
-        "$downloadUrl = ($htmlContent | Select-String -Pattern $pattern).Matches.Groups[2].Value",
-        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\""
+    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
+    "pre_install": [
+        "$json = Get-Content -Path '$dir/dl.json' -Raw | ConvertFrom-Json",
+        "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '蓝牙' }).drivelist | Where-Object { $_.DriverName -eq 'BlueTooth Driver 蓝牙驱动' })",
+        "$downloadUrl = $driverJson.FilePath",
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
+        "Remove-Item $dir/dl.json"
     ],
     "installer": {
         "script": [
@@ -27,7 +23,12 @@
         "keep": false
     },
     "checkver": {
-        "url" : "https://newsupport.lenovo.com.cn/driveList.html?fromsource=driveList&selname=Legion%20y9000p%20IAH7H%282022%E6%AC%BE%29",
-        "regex": "Blue[Tt]ooth Driver 蓝牙驱动[\\s\\S]*?版本：(\\S+)<\\/span>"
+        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043",
+        "jsonpath": "$.data.partList[?(@.PartName=='蓝牙')].drivelist[?(@.DriverName=='BlueTooth Driver 蓝牙驱动')].Version",
+        "regex": "\\w+_([\\d\\.]+)\\/\\w+_([\\w\\.]+)\\/\\w+_([\\w\\.]+)",
+        "replace": "${1}-${2}-${3}"
+    },
+    "autoupdate": {
+
     }
 }
