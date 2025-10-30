@@ -27,7 +27,7 @@
         "keep": false
     },
     "checkver": {
-        "url" : "https://newsupport.lenovo.com.cn/driveList.html?fromsource=driveList&selname=Legion%20y9000p%20IAH7H(2022%E6%AC%BE)",
+        "url" : "https://newsupport.lenovo.com.cn/driveList.html?fromsource=driveList&selname=Legion%20y9000p%20IAH7H%282022%E6%AC%BE%29",
         "regex": "Blue[Tt]ooth Driver 蓝牙驱动[\\s\\S]*?版本：(\\S+)<\\/span>"
     }
 }
