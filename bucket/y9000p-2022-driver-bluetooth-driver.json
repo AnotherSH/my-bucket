@@ -1,0 +1,33 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "1.0.0",
+    "description": "蓝牙驱动",
+    "homepage": "https://newsupport.lenovo.com.cn/",
+    "license": "MIT",
+    "url": "https://newsupport.lenovo.com.cn/#/dl.txt",
+    "pre_install":[
+        "Remove-Item $dir/dl.txt",
+        "$url = 'https://newsupport.lenovo.com.cn/driveList.html?fromsource=driveList&selname=Legion%20y9000p%20IAH7H(2022%E6%AC%BE)'",
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
+        "$response = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction Stop",
+        "$htmlContent = $response.Content",
+
+        "$pattern = \"Blue[Tt]ooth Driver 蓝牙驱动[\\s\\S]*?版本：(?<version>\\S+)<\\/span>[\\s\\S]+?data-url=\"(?<downloadUrl>\\S+)\"\"",
+        "$downloadUrl = ($htmlContent | Select-String -Pattern $pattern).Matches.Groups[2].Value",
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\""
+    ],
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/D=$dir\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'"
+        ],
+        "keep": false
+    },
+    "checkver": {
+        "url" : "https://newsupport.lenovo.com.cn/driveList.html?fromsource=driveList&selname=Legion%20y9000p%20IAH7H(2022%E6%AC%BE)",
+        "regex": "Blue[Tt]ooth Driver 蓝牙驱动[\\s\\S]*?版本：(\\S+)<\\/span>"
+    }
+}

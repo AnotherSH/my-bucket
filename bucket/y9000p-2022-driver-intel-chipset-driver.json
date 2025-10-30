@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "1.0.0",
+    "description": "英特尔芯片组驱动",
+    "homepage": "https://newsupport.lenovo.com.cn/",
+    "license": "MIT",
+    "url": "https://newdriverdl1.lenovo.com.cn/newlenovo/alldriversupload/108244/chipset-DYY5037F7P4R5AD0.exe?token=9CpJ_L4KqTUybHCbTI9UyvSsulQmfHmvH85xd5CD4-2n3v2xUvbjycO79M14UNCi#/chipset.exe",
+    "installer": {
+        "script": [
+            "$process = Start-Process -FilePath $dir/chipset.exe -ArgumentList /s -Wait -PassThru -NoNewWindow",
+            "if ($process.ExitCode -eq 0) {",
+                "Write-Host \"安装成功完成\"",
+            "} else {",
+                "Write-Error \"安装失败，退出代码: $($process.ExitCode)\"",
+                "exit $process.ExitCode}"
+        ],
+        "keep": false
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/AnotherSH/DelappConsole/releases/download/$version/DelappConsole.7z",
+        "hash": {
+            "url": "https://github.com/AnotherSH/DelappConsole/releases",
+            "find": "SHA256:([A-Za-z0-9]{64})"
+        }
+    }
+}
