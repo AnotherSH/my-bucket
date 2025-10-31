@@ -3,7 +3,7 @@
     "version": "15.11.29.70",
     "description": "Lenovo Energy Management 联想电源管理驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "9940ed55fa34c439575a57fc66bc6d9d5316c98193eea00a76da0d816d1d19e3",
     "pre_install": [

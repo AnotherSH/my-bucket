@@ -3,7 +3,7 @@
     "version": "19.5.1.1040",
     "description": "Intel Rapid Storage Technology Driver 英特尔快速存储技术（IRST）驱动程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "8c839ae22421117ad72a69275b8064d4066e192f050bcb0c4db6cf96ad40990f",
     "pre_install": [

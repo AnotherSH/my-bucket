@@ -3,7 +3,7 @@
     "version": "10.0.22000.20268-10.13.22000.19-5.0.18.175",
     "description": "Camera Driver 摄像头驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "d75116cc26e3b8defcecad6972ce1a8c06ff1ac0dc4e2fbd76fdb268d12f8cad",
     "pre_install": [

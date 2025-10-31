@@ -3,7 +3,7 @@
     "version": "J2ME61WW",
     "description": "Intel Management Engine Firmware Update Tool",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "374fe3884e254f3e3df731a6ecc3dd8c760ee8c6aa220e404c999550666b5db6",
     "pre_install": [

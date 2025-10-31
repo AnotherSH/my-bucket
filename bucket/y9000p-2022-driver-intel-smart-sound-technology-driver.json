@@ -3,7 +3,7 @@
     "version": "10.29.00.9947",
     "description": "Intel Smart Sound Technology (SST) Driver 英特尔智能声音技术（SST）驱动程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "f7370813fcc52752dd30c1433e73ce45d1d5f0645592fb3a61f2cee3e680f916",
     "pre_install": [

@@ -3,7 +3,7 @@
     "version": "31.0.101.4502",
     "description": "Intel VGA Driver 英特尔集成显卡驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "46bf14fd85b5ef7f327574476076a8bd1b7fdb53cd38c320d0b956fc0d0cac69",
     "pre_install": [

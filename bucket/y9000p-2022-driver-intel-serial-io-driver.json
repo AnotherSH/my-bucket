@@ -3,7 +3,7 @@
     "version": "30.100.2237.26",
     "description": "Intel Serial-IO (SIO) Driver 英特尔串行驱动程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "dee294c89bd1ed28b65160d60d94f2b7507592a3665dba6ff621b456f6f54ef2",
     "pre_install": [

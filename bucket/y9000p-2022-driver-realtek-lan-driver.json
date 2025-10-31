@@ -3,7 +3,7 @@
     "version": "1168.009.0614.2022",
     "description": "Realtek Lan Driver 网卡驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "76085945809901f8068fcad913ba209c351b5dd04f11e7a900b75b78681e0339",
     "pre_install": [

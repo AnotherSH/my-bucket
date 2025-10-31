@@ -3,7 +3,7 @@
     "version": "J2CN61WW-J2EC60WW",
     "description": "BIOS升级程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "c8a70675616da2a0c4ee3dc78fea68fea0cde49e22e522ad0a079d3c5effcec3",
     "pre_install": [

@@ -3,7 +3,7 @@
     "version": "2240.3.4.0",
     "description": "Intel Management Engine Interface Driver 英特尔管理引擎接口(MEI)驱动程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "12ed519a93ce19e517b8e2276585f763231bb8a90ee6b4f815244af172186dfb",
     "pre_install": [

@@ -3,7 +3,7 @@
     "version": "10.1.36.7",
     "description": "IntelChipset Driver英特尔主板芯片组驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash":"e4a2526273c75ae9685ea00799652053aae859a882069a98858ee9685c175c2b",
     "pre_install": [

@@ -3,7 +3,7 @@
     "version": "23.60.0.10-2024.0.8.137-6001.15.123.302-6001.10.351.0-6001.16.126.300",
     "description": "Wlan Driver 无线网卡设备驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "a1473a265a0b92f146bbec3ac0aa96b18f15710c9ea94452bf4b36fd2d6e734b",
     "pre_install": [

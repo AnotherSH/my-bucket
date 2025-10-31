@@ -3,7 +3,7 @@
     "version": "1.0.11002.28566",
     "description": "Intel Dynamic Platform and Thermal Framework Driver 英特尔动态平台和热框架（DPTF）驱动程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "2feef3a20e77547c59b0e03940af11b484876326f7f114676d6ea468ee14eac7",
     "pre_install": [

@@ -3,7 +3,7 @@
     "version": "2.21.0",
     "description": "X-Rite Color Assistant（此软件仅能安装在经过授权的机器上）",
     "homepage": "https://newsupport.lenovo.com.cn/",
-    "license": "MIT",
+    "license": "Freeware",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
     "hash": "391db6cb8f12b408b59a38fdbdd6bee9ba1c1cc12bb8f22bcd048577b881c659",
     "pre_install": [
