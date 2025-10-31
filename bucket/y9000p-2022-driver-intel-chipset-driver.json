@@ -5,6 +5,7 @@
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "MIT",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
+    "hash":"e4a2526273c75ae9685ea00799652053aae859a882069a98858ee9685c175c2b",
     "pre_install": [
         "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '主板' }).drivelist | Where-Object { $_.DriverName -eq 'Intel Chipset Driver 英特尔主板芯片组驱动' })",

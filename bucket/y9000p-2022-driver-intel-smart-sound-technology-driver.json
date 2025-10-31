@@ -1,14 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "23.60.0.1-1.9.1051.3004-1.9.1051.3009",
-    "description": "蓝牙驱动",
+    "version": "10.29.00.9947",
+    "description": "Intel Smart Sound Technology (SST) Driver 英特尔智能声音技术（SST）驱动程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "MIT",
     "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
-    "hash":"e4a2526273c75ae9685ea00799652053aae859a882069a98858ee9685c175c2b",
+    "hash": "f7370813fcc52752dd30c1433e73ce45d1d5f0645592fb3a61f2cee3e680f916",
     "pre_install": [
         "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
-        "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '蓝牙' }).drivelist | Where-Object { $_.DriverName -eq 'BlueTooth Driver 蓝牙驱动' })",
+        "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '声卡' }).drivelist | Where-Object { $_.DriverName -eq 'Intel Smart Sound Technology (SST) Driver 英特尔智能声音技术（SST）驱动程序' })",
         "$downloadUrl = $driverJson.FilePath",
         "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
         "Remove-Item $dir/dl.json"
@@ -27,9 +27,7 @@
     "innosetup": true,
     "checkver": {
         "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043",
-        "jsonpath": "$.data.partList[?(@.PartName=='蓝牙')].drivelist[?(@.DriverName=='BlueTooth Driver 蓝牙驱动')].Version",
-        "regex": "\\w+_([\\d\\.]+)\\/\\w+_([\\w\\.]+)\\/\\w+_([\\w\\.]+)",
-        "replace": "${1}-${2}-${3}"
+        "jsonpath": "$.data.partList[?(@.PartName=='声卡')].drivelist[?(@.DriverName=='Intel Smart Sound Technology (SST) Driver 英特尔智能声音技术（SST）驱动程序')].Version"
     },
     "autoupdate": {
         "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"

@@ -4,6 +4,7 @@
     "homepage": "https://pinyin.sogou.com/zhihui/",
     "license": "Freeware",
     "url": "https://pinyin.sogou.com/zhihui/#/dl.txt",
+    "hash": "adcc5d3c05d36a15ee911161f99c1f64f4eac7cde03987a63716ac45469d17ed",
     "pre_install": [
         "Remove-Item $dir/dl.txt",
         "$url = 'https://pinyin.sogou.com/zhihui/'",
