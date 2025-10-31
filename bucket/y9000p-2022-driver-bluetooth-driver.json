@@ -14,14 +14,16 @@
     ],
     "installer": {
         "script": [
-            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/D=$dir\" -PassThru",
+            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/sp- /silent /norestart\" -PassThru",
             "$ppid = $process.Id",
             "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
             "Wait-Process -Id $ppid",
-            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'"
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/dl.exe"
         ],
         "keep": false
     },
+    "innosetup": true,
     "checkver": {
         "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043",
         "jsonpath": "$.data.partList[?(@.PartName=='蓝牙')].drivelist[?(@.DriverName=='BlueTooth Driver 蓝牙驱动')].Version",
