@@ -1,0 +1,37 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "23.60.0.10-2024.0.8.137-6001.15.123.302-6001.10.351.0-6001.16.126.300",
+    "description": "Wlan Driver 无线网卡设备驱动",
+    "homepage": "https://newsupport.lenovo.com.cn/",
+    "license": "MIT",
+    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
+    "hash": "a1473a265a0b92f146bbec3ac0aa96b18f15710c9ea94452bf4b36fd2d6e734b",
+    "pre_install": [
+        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
+        "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '无线网卡' }).drivelist | Where-Object { $_.DriverName -eq 'Wlan Driver 无线网卡设备驱动' })",
+        "$downloadUrl = $driverJson.FilePath",
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
+        "Remove-Item $dir/dl.json"
+    ],
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/sp- /silent /norestart\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/dl.exe"
+        ],
+        "keep": false
+    },
+    "innosetup": true,
+    "checkver": {
+        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043",
+        "jsonpath": "$.data.partList[?(@.PartName=='无线网卡')].drivelist[?(@.DriverName=='Wlan Driver 无线网卡设备驱动')].Version",
+        "regex": "\\w+_([\\d\\.]+)\\/\\w+_([\\w\\.]+)\\/\\w+_([\\w\\.]+)\\/\\w+_([\\w\\.]+)\\/\\w+_([\\w\\.]+)",
+        "replace": "${1}-${2}-${3}-${4}-${5}"
+    },
+    "autoupdate": {
+        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
+    }
+}

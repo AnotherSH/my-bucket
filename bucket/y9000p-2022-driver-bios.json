@@ -1,0 +1,37 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "J2CN61WW-J2EC60WW",
+    "description": "BIOS升级程序",
+    "homepage": "https://newsupport.lenovo.com.cn/",
+    "license": "MIT",
+    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
+    "hash": "c8a70675616da2a0c4ee3dc78fea68fea0cde49e22e522ad0a079d3c5effcec3",
+    "pre_install": [
+        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
+        "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq 'BIOS' }).drivelist | Where-Object { $_.DriverName -eq 'BIOS升级程序' })",
+        "$downloadUrl = $driverJson.FilePath",
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
+        "Remove-Item $dir/dl.json"
+    ],
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/sp- /silent /norestart\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/dl.exe"
+        ],
+        "keep": false
+    },
+    "innosetup": true,
+    "checkver": {
+        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043",
+        "jsonpath": "$.data.partList[?(@.PartName=='BIOS')].drivelist[?(@.DriverName=='BIOS升级程序')].Version",
+        "regex": "[\\w ]+: (\\w+),[\\w ]+: (\\w+)",
+        "replace": "${1}-${2}"
+    },
+    "autoupdate": {
+        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
+    }
+}
