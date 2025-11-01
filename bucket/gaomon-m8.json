@@ -1,0 +1,41 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "16.0.0.203",
+    "homepage": "https://gaomon.cn/",
+    "description": "高漫 M8 驱动",
+    "license": "Freeware",
+    "url": "https://driver.gaomon.cn/download/Driver/Win/GaomonTabletInstall_16.0.0.203.exe#/GaomonTabletInstall.exe",
+    "hash": "e52e6297cdde9e676ee046789c9730b79e7321df22f2a5d8a2d7196201d2c700",
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\GaomonTabletInstall.exe\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/GaomonTabletInstall.exe"
+        ],
+        "keep": false
+    },
+    "pre_uninstall":[
+        "if(Get-Command Tu -ErrorAction SilentlyContinue){",
+        "$process = Start-Process Tu -Verb RunAs -PassThru}",
+        "elseif(Get-Command geek -ErrorAction SilentlyContinue){",
+        "$process = Start-Process geek -Verb RunAs -PassThru}",
+        "$ppid = $process.Id",
+        "Write-Host '已启动卸载软件： '$process.Name' , 等待其关闭...'",
+        "Wait-Process -Id $ppid",
+        "Write-Host '卸载软件： '$process.Name' 已关闭 ， 继续关闭搜狗残留关进程...'",
+        "Stop-Process -Name \"GAOMONTablet\" -Force -ErrorAction SilentlyContinue",
+        "if(Get-Command DelappConsole -ErrorAction SilentlyContinue){",
+        "DelappConsole $dir}"
+    ],
+    "checkver": {
+        "url": "https://gaomon.cn/get_download?model=6&system=1&type=1",
+        "jsonpath": "$.data[0].down_url",
+        "regex": "_([\\d\\.]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://driver.gaomon.cn/download/Driver/Win/GaomonTabletInstall_$version.exe#/GaomonTabletInstall.exe"
+    }
+}
