@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "9.29.1974.1",
+    "homepage": "https://www.microsoft.com",
+    "description": "DirectX 最终用户运行时 Web 安装程序",
+    "license": "Freeware",
+    "url": "https://download.microsoft.com/download/1/7/1/1718ccc4-6315-4d8e-9543-8e28a4e18c4c/dxwebsetup.exe#/dl.exe",
+    "hash": "2cf71d098c608c56e07f4655855a886c3102553f648df88458df616b26fd612f",
+    "installer": {
+        "script" : [
+            "$process = Start-Process \"$dir\\dl.exe\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/dl.exe"
+        ],
+        "keep" : false
+    },
+    "checkver": {
+        "url": "https://www.microsoft.com/zh-cn/download/details.aspx?id=35?ocid=orsearch_bing&msockid=1decdbe8c9896ef93e22ce6ac8ab6fc8",
+        "regex": "版本:[\\S ]+?>([0-9\\.]+)<"
+    },
+    "autoupdate": {
+        "url": "https://download.microsoft.com/download/1/7/1/1718ccc4-6315-4d8e-9543-8e28a4e18c4c/dxwebsetup.exe"
+    }
+}
