@@ -4,14 +4,14 @@
     "description": "BIOS升级程序",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "Freeware",
-    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
-    "hash": "c8a70675616da2a0c4ee3dc78fea68fea0cde49e22e522ad0a079d3c5effcec3",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "pre_install": [
-        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
+        "$jsonUrl = \"https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043\"",
+        "$json = Invoke-WebRequest -Uri $jsonUrl | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq 'BIOS' }).drivelist | Where-Object { $_.DriverName -eq 'BIOS升级程序' })",
         "$downloadUrl = $driverJson.FilePath",
-        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
-        "Remove-Item $dir/dl.json"
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\""
     ],
     "installer": {
         "script": [
@@ -32,6 +32,6 @@
         "replace": "${1}-${2}"
     },
     "autoupdate": {
-        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes"
     }
 }

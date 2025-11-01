@@ -1,10 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "##": "搜狗拼音输入法。此处url为无用的(尽量选择了永远不变的内容防止hash修改)，仅为了获取版本号",
     "version": "83e",
     "homepage": "https://pinyin.sogou.com/zhihui/",
     "license": "Freeware",
-    "url": "https://pinyin.sogou.com/zhihui/#/dl.txt",
-    "hash": "adcc5d3c05d36a15ee911161f99c1f64f4eac7cde03987a63716ac45469d17ed",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "pre_install": [
         "Remove-Item $dir/dl.txt",
         "$url = 'https://pinyin.sogou.com/zhihui/'",
@@ -47,6 +48,6 @@
         "regex": "https:\\/\\/ime-sec\\.gtimg\\.com\\/(?<date>[\\d]{12})\\/(?<hash>[0-9A-Za-z]{32})\\/pc\\/dl\\/index\\/(?<timestamp>[\\d]{10,11})\\/sogou_pinyin_zhihui_(?<version>[\\d]+[0-9A-Za-z]+)\\.exe"
     },
     "autoupdate": {
-        "url": "https://pinyin.sogou.com/zhihui/#/dl.txt"
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes"
     }
 }

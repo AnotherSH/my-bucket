@@ -4,14 +4,14 @@
     "description": "Realtek Lan Driver 网卡驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "Freeware",
-    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
-    "hash": "76085945809901f8068fcad913ba209c351b5dd04f11e7a900b75b78681e0339",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "pre_install": [
-        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
+        "$jsonUrl = \"https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043\"",
+        "$json = Invoke-WebRequest -Uri $jsonUrl | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '有线网卡' }).drivelist | Where-Object { $_.DriverName -eq 'Realtek Lan Driver 网卡驱动' })",
         "$downloadUrl = $driverJson.FilePath",
-        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
-        "Remove-Item $dir/dl.json"
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\""
     ],
     "installer": {
         "script": [
@@ -30,6 +30,6 @@
         "jsonpath": "$.data.partList[?(@.PartName=='有线网卡')].drivelist[?(@.DriverName=='Realtek Lan Driver 网卡驱动')].Version"
     },
     "autoupdate": {
-        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes"
     }
 }

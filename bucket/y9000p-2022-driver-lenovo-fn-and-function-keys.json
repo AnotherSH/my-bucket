@@ -4,14 +4,14 @@
     "description": "Lenovo Fn and Function Keys 联想 FN 功能键",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "Freeware",
-    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
-    "hash": "447e23525d0a147504e92344124586c25625e2b82b354dbc5f818be9c8f58fe4",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "pre_install": [
-        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
+        "$jsonUrl = \"https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043\"",
+        "$json = Invoke-WebRequest -Uri $jsonUrl | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '驱动程序' }).drivelist | Where-Object { $_.DriverName -eq 'Lenovo Fn and Function Keys 联想 FN 功能键' })",
         "$downloadUrl = $driverJson.FilePath",
-        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
-        "Remove-Item $dir/dl.json"
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\""
     ],
     "installer": {
         "script": [
@@ -30,6 +30,6 @@
         "jsonpath": "$.data.partList[?(@.PartName=='驱动程序')].drivelist[?(@.DriverName=='Lenovo Fn and Function Keys 联想 FN 功能键')].Version"
     },
     "autoupdate": {
-        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes"
     }
 }

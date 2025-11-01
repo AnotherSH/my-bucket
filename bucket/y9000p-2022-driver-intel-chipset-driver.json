@@ -4,14 +4,14 @@
     "description": "IntelChipset Driver英特尔主板芯片组驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "Freeware",
-    "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json",
-    "hash":"e4a2526273c75ae9685ea00799652053aae859a882069a98858ee9685c175c2b",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "pre_install": [
-        "$json = Get-Content -Path \"$dir/dl.json\" -Raw | ConvertFrom-Json",
+        "$jsonUrl = \"https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043\"",
+        "$json = Invoke-WebRequest -Uri $jsonUrl | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '主板' }).drivelist | Where-Object { $_.DriverName -eq 'Intel Chipset Driver 英特尔主板芯片组驱动' })",
         "$downloadUrl = $driverJson.FilePath",
-        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\"",
-        "Remove-Item $dir/dl.json"
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/dl.exe\""
     ],
     "installer": {
         "script": [
@@ -30,6 +30,6 @@
         "jsonpath": "$.data.partList[?(@.PartName=='主板')].drivelist[?(@.DriverName=='Intel Chipset Driver 英特尔主板芯片组驱动')].Version"
     },
     "autoupdate": {
-        "url": "https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043#/dl.json"
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes"
     }
 }
