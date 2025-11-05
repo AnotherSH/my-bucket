@@ -1,0 +1,64 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "16.0.1.24808",
+    "description": "向日葵远程控制",
+    "homepage": "https://sunlogin.oray.com/",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.oray.com/sl/windows/AweSun_16.0.1.24808_x64.exe#/dl.exe",
+            "hash": "md5:88a57d0510d9fffd5073d3876f1b045a"
+        },
+        "32bit": {
+            "url": "https://d-cdn.oray.com/sl/windows/AweSun_16.0.1.24808_x86.exe#/dl.exe",
+            "hash": "md5:3cae3642f0ec36fb04a8043ba42bfdd1"
+        }
+    },
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\dl.exe\" -ArgumentList \"/D=$dir\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/dl.exe"
+        ],
+        "keep": false
+    },
+    "pre_uninstall": [
+        "if(Get-Command Tu -ErrorAction SilentlyContinue){",
+        "$process = Start-Process Tu -Verb RunAs -PassThru}",
+        "elseif(Get-Command geek -ErrorAction SilentlyContinue){",
+        "$process = Start-Process geek -Verb RunAs -PassThru}",
+        "$ppid = $process.Id",
+        "Write-Host '已启动卸载软件： '$process.Name' , 等待其关闭...'",
+        "Wait-Process -Id $ppid",
+        "Write-Host '卸载软件： '$process.Name' 已关闭'",
+        "if(Get-Command DelappConsole -ErrorAction SilentlyContinue){",
+        "DelappConsole $dir}"
+    ],
+    "checkver": {
+        "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?versiontype=stable&x64=1",
+        "jp": "$.versionno"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.oray.com/sl/windows/AweSun_$version_x64.exe#/dl.exe",
+                "hash": {
+                    "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?versiontype=stable&x64=1",
+                    "jp": "$.md5"
+                }
+            },
+            "32bit": {
+                "url": "https://d-cdn.oray.com/sl/windows/AweSun_$version_x86.exe#/dl.exe",
+                "hash": {
+                    "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?versiontype=stable&x64=0",
+                    "jp": "$.md5"
+                }
+            }
+        }
+    }
+}

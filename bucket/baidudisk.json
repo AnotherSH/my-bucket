@@ -1,0 +1,30 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "7.61.5.120",
+    "description": "百度网盘",
+    "homepage": "http://pan.baidu.com/",
+    "license": {
+        "identifier": "Unknown",
+        "url": "http://pan.baidu.com/disk/duty/"
+    },
+    "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_7.61.5.120.exe#/dl.7z",
+    "hash": "f564c9556164d3dfa0a14131a674155e5a211f51be18d6542f3b3ebc16defbe1",
+    "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\"",
+    "shortcuts": [
+        [
+            "BaiduNetdisk.exe",
+            "百度网盘"
+        ]
+    ],
+    "persist": "users",
+    "checkver": {
+        "url": "http://pan.baidu.com/disk/cmsdata?do=client",
+        "regex": "\\/yunguanjia\\/(?<name>Baidu[\\w]+_)(\\d+\\.\\d+\\.\\d+\\.\\d+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/$matchName$version.exe#/dl.7z",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "12.4.4.3740",
+    "description": "迅雷",
+    "homepage": "https://pc.xunlei.com/",
+    "license": {
+        "identifier": "Unknown"
+    },
+    "url": "https://down.sandai.net/thunder11/XunLeiSetup12.4.4.3740.exe#/dl.7z",
+    "hash": "169d292b3ed1a12621bad83e4f23c04ca0a551b6b9d09bde0b23ca5287aa3997",
+    "shortcuts": [
+        [
+            "Program/Thunder.exe",
+            "迅雷"
+        ]
+    ],
+    "checkver": {
+        "url": "https://yangtai.xunlei.com/?cat=75",
+        "regex": "XunLeiWebSetup([\\d\\.]+)\\w*.exe"
+    },
+    "autoupdate": {
+        "url": "https://down.sandai.net/thunder11/XunLeiSetup$version.exe#/dl.7z"
+    }
+}

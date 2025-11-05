@@ -1,0 +1,50 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "4.0.0148",
+    "homepage": "https://www.sourceinsight.com/",
+    "description": "Source Insight",
+    "license": "Freeware",
+    "url": "https://assets-sourceinsight.sfo2.digitaloceanspaces.com/v4/release/sourceinsight40148_7177-setup.exe#/dl.exe",
+    "hash": "668523c24b8c9f6d33fe1ee03994cf30c6f2b2c5210cea2a2c27cb92d7f3b99a",
+    "pre_install": [
+        "$url = 'https://github.com/YukiIsait/SourceInsight4Patch/releases'",
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
+        "$response = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction Stop",
+        "$htmlContent = $response.Content",
+        "$pattern = \"YukiIsait\\/SourceInsight4Patch\\/releases\\/tag\\/v([\\d\\.]+)\"",
+        "$v = ($htmlContent | Select-String -Pattern $pattern).Matches.Groups[1].Value",
+        "$downloadUrl = \"https://github.com/YukiIsait/SourceInsight4Patch/releases/download/v$v/msimg32.dll\"",
+        "Invoke-WebRequest -Uri $downloadUrl -OutFile \"$dir/msimg32.dll\""
+    ],
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\dl.exe\" -PassThru",
+            "$ppid = $process.Id",
+            "Write-Host '已启动安装软件： '$process.Name' , 等待其安装完毕...'",
+            "Write-Host '请复制安装路径： '$dir",
+            "Wait-Process -Id $ppid",
+            "Write-Host '安装软件： '$process.Name' 已关闭 ， 删除安装软件...'",
+            "Remove-Item $dir/dl.exe"
+        ],
+        "keep": false
+    },
+    "pre_uninstall": [
+        "if(Get-Command Tu -ErrorAction SilentlyContinue){",
+        "$process = Start-Process Tu -Verb RunAs -PassThru}",
+        "elseif(Get-Command geek -ErrorAction SilentlyContinue){",
+        "$process = Start-Process geek -Verb RunAs -PassThru}",
+        "$ppid = $process.Id",
+        "Write-Host '已启动卸载软件： '$process.Name' , 等待其关闭...'",
+        "Wait-Process -Id $ppid",
+        "Write-Host '卸载软件： '$process.Name' 已关闭'",
+        "if(Get-Command DelappConsole -ErrorAction SilentlyContinue){",
+        "DelappConsole $dir}"
+    ],
+    "checkver": {
+        "url": "https://www.sourceinsight.com/download/",
+        "regex": "Version (?<version>[\\d\\.]+) [\\s\\S]+?\\/sourceinsight(?<code>[\\d_]+)-"
+    },
+    "autoupdate": {
+        "url": "https://assets-sourceinsight.sfo2.digitaloceanspaces.com/v4/release/sourceinsight$matchCode-setup.exe#/dl.exe"
+    }
+}

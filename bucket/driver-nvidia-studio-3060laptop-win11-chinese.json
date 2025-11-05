@@ -4,10 +4,11 @@
     "description": "NVIDIA Studio 驱动程序",
     "homepage": "https://www.nvidia.cn/",
     "license": "Freeware",
-    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes#/dl.txt",
     "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "installer": {
         "script": [
+            "Remove-Item $dir/dl.txt",
             "$jsonUrl = \"https://gfwsl.geforce.cn/services_toolkit/services/com/nvidia/services/AjaxDriverService.php?func=DriverManualLookup&psid=123&pfid=940&osID=135&languageCode=2052&beta=0&isWHQL=0&dltype=-1&dch=1&upCRD=1&qnf=0&sort1=1&numberOfResults=10\"",
             "$json = Invoke-WebRequest -Uri $jsonUrl | ConvertFrom-Json",
             "$downloadUrl = $json.IDS[0].downloadInfo.DownloadURL",

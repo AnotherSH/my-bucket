@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
+    "version": "63.2.0",
+    "description": "HEU_KMS_Activator 是一个用于激活 HEU 软件的工具",
+    "homepage": "https://github.com/zbezj/HEU_KMS_Activator/",
+    "url": "https://github.com/zbezj/HEU_KMS_Activator/releases/download/63.2.0/HEU_KMS_Activator_v63.2.0.rar",
+    "hash": "6cb0efacbd9d3afd8c76d3f340b088c3e98f637ad20b3e5c9536eb379891ee72",
+    "bin": "HEU_KMS_Activator.exe",
+    "license": "MIT",
+    "shortcuts": [
+        [
+            "HEU_KMS_Activator.exe",
+            "HEU_KMS_Activator"
+        ]
+    ],
+    "installer": {
+        "script": "Rename-Item -Path \"$dir/HEU_KMS_Activator_v$version.exe\" -NewName \"HEU_KMS_Activator.exe\""
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/zbezj/HEU_KMS_Activator/releases/download/$version/HEU_KMS_Activator_v$version.rar",
+        "hash": {
+            "url": "https://github.com/zbezj/HEU_KMS_Activator/releases",
+            "find": "SHA256:([A-Za-z0-9]{64})"
+        }
+    }
+}

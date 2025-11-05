@@ -4,9 +4,10 @@
     "description": "Camera Driver 摄像头驱动",
     "homepage": "https://newsupport.lenovo.com.cn/",
     "license": "Freeware",
-    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes#/dl.txt",
     "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
     "pre_install": [
+        "Remove-Item $dir/dl.txt",
         "$jsonUrl = \"https://newsupport.lenovo.com.cn/api/drive/drive_listnew?searchKey=15043\"",
         "$json = Invoke-WebRequest -Uri $jsonUrl | ConvertFrom-Json",
         "$driverJson = (($json.data.partList | Where-Object { $_.PartName -eq '摄像头' }).drivelist | Where-Object { $_.DriverName -eq 'Camera Driver 摄像头驱动' })",
