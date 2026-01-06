@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "591.44",
+    "version": "591.74",
     "description": "NVIDIA Studio 驱动程序",
     "homepage": "https://www.nvidia.cn/",
     "license": "Freeware",
