@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "16.1.0.26218",
+    "version": "16.2.0.27059",
     "description": "向日葵远程控制",
     "homepage": "https://sunlogin.oray.com/",
     "license": {
@@ -8,11 +8,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.oray.com/sl/windows/AweSun_16.1.0.26218_x64.exe#/dl.exe",
-            "hash": "md5:98e1a44a95d50e7f39307e6c7e503fa6"
+            "url": "https://dl.oray.com/sl/windows/AweSun_16.2.0.27059_x64.exe#/dl.exe",
+            "hash": "md5:75d62160efaf341efd7f7abbe2def5a9"
         },
         "32bit": {
-            "url": "https://d-cdn.oray.com/sl/windows/AweSun_16.1.0.26218_x86.exe#/dl.exe",
+            "url": "https://d-cdn.oray.com/sl/windows/AweSun_16.2.0.27059_x86.exe#/dl.exe",
             "hash": "md5:b85703a08915bd72285c04d18ce140e4"
         }
     },
