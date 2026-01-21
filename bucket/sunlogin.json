@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "16.2.0.27059",
+    "version": "16.0.1.24808",
     "description": "向日葵远程控制",
     "homepage": "https://sunlogin.oray.com/",
     "license": {
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.oray.com/sl/windows/AweSun_16.2.0.27059_x64.exe#/dl.exe",
-            "hash": "md5:75d62160efaf341efd7f7abbe2def5a9"
+            "url": "https://dl.oray.com/sl/windows/AweSun_16.0.1.24808_x64.exe#/dl.exe",
+            "hash": "md5:88a57d0510d9fffd5073d3876f1b045a"
         },
         "32bit": {
-            "url": "https://d-cdn.oray.com/sl/windows/AweSun_16.2.0.27059_x86.exe#/dl.exe",
-            "hash": "md5:b85703a08915bd72285c04d18ce140e4"
+            "url": "https://d-cdn.oray.com/sl/windows/AweSun_16.0.1.24808_x86.exe#/dl.exe",
+            "hash": "md5:3cae3642f0ec36fb04a8043ba42bfdd1"
         }
     },
     "installer": {
@@ -46,7 +46,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.oray.com/sl/windows/AweSun_$version_x64.exe#/dl.exe",
+                "url": "https://dw.oray.com/sl/windows/AweSun_$version_x64.exe#/dl.exe",
                 "hash": {
                     "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?versiontype=stable&x64=1",
                     "jp": "$.md5"
