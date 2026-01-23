@@ -8,12 +8,20 @@
     },
     "architecture": {
         "64bit": {
+<<<<<<< HEAD
             "url": "https://dw.oray.com/sl/windows/AweSun_16.2.0.27059_x64.exe#/dl.exe",
+=======
+            "url": "https://dl.oray.com/sl/windows/AweSun_16.2.0.27059_x64.exe#/dl.exe",
+>>>>>>> e3ce9cf (移除向日葵)
             "hash": "md5:75d62160efaf341efd7f7abbe2def5a9"
         },
         "32bit": {
             "url": "https://d-cdn.oray.com/sl/windows/AweSun_16.2.0.27059_x86.exe#/dl.exe",
+<<<<<<< HEAD
             "hash": "md5:a922cbba13d22600ba2a5aefbee4fee2"
+=======
+            "hash": "md5:b85703a08915bd72285c04d18ce140e4"
+>>>>>>> e3ce9cf (移除向日葵)
         }
     },
     "installer": {
