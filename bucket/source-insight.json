@@ -1,11 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "4.0.0148",
+    "version": "4.0.0150",
     "homepage": "https://www.sourceinsight.com/",
     "description": "Source Insight",
     "license": "Freeware",
-    "url": "https://assets-sourceinsight.sfo2.digitaloceanspaces.com/v4/release/sourceinsight40148_7177-setup.exe#/dl.exe",
-    "hash": "668523c24b8c9f6d33fe1ee03994cf30c6f2b2c5210cea2a2c27cb92d7f3b99a",
+    "url": "https://assets-sourceinsight.sfo2.digitaloceanspaces.com/v4/release/sourceinsight40150_5809-setup.exe#/dl.exe",
+    "hash": "372fef21eac973f5497c0c6c792490471bcbc270603de826306568f542eddf99",
     "pre_install": [
         "$url = 'https://github.com/YukiIsait/SourceInsight4Patch/releases'",
         "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
