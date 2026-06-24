@@ -1,11 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "16.0.0.203",
+    "version": "16.0.0.218",
     "homepage": "https://gaomon.cn/",
     "description": "高漫 M8 驱动",
     "license": "Freeware",
-    "url": "https://driver.gaomon.cn/download/Driver/Win/GaomonTabletInstall_16.0.0.203.exe#/GaomonTabletInstall.exe",
-    "hash": "e52e6297cdde9e676ee046789c9730b79e7321df22f2a5d8a2d7196201d2c700",
+    "url": "https://driver.gaomon.cn/download/Driver/Win/GaomonTabletInstall_16.0.0.218.exe#/GaomonTabletInstall.exe",
+    "hash": "ab12b475151fa01742756c53152eb11725d2c1aa9c1514acaa06291cedbd7e83",
     "installer": {
         "script": [
             "$process = Start-Process \"$dir\\GaomonTabletInstall.exe\" -ArgumentList \"/D=$dir\" -PassThru",
@@ -17,7 +17,7 @@
         ],
         "keep": false
     },
-    "pre_uninstall":[
+    "pre_uninstall": [
         "if(Get-Command Tu -ErrorAction SilentlyContinue){",
         "$process = Start-Process Tu -Verb RunAs -PassThru}",
         "elseif(Get-Command geek -ErrorAction SilentlyContinue){",
