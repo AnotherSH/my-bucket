@@ -1,13 +1,13 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "5.52.0",
+    "version": "5.52.1",
     "description": "UGIT",
     "homepage": "https://ugit.qq.com/",
     "license": {
         "identifier": "Freeware"
     },
     "url": "https://ugit.qq.com/downloads/ugit_public/UGitSetup.exe",
-    "hash": "2a9e04413518d99e0e99c9abab17c7d37e0beac3b0f752247c2c5da2d52f4925",
+    "hash": "17f9c36b15e9d348e3d687ab0abf4f8be879bcd6334a1bf151b38fc79dff4b5f",
     "installer": {
         "script": [
             "$process = Start-Process \"$dir\\UGitSetup.exe\" -ArgumentList \"/D=$dir\" -PassThru",
