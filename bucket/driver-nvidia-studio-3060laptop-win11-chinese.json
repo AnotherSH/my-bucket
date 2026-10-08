@@ -4,8 +4,13 @@
     "description": "NVIDIA Studio 驱动程序",
     "homepage": "https://www.nvidia.cn/",
     "license": "Freeware",
+<<<<<<< HEAD
     "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
     "hash": "52230c560151660e9c9488937d17f7018ca115376b042b67be3ed4c5cffe161d",
+=======
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes#/dl.txt",
+    "hash": "75f7fc4b73a991060cb6b81bb4bbe5a94673f801b523ba2c100de75f3678b142",
+>>>>>>> ec4b302 (nvidia下载的文件忘记改名dl.txt)
     "installer": {
         "script": [
             "Remove-Item $dir/dl.txt",
