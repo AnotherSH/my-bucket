@@ -1,10 +1,10 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/schema.json",
-    "version": "617.42",
+    "version": "621.14",
     "description": "NVIDIA Studio 驱动程序",
     "homepage": "https://www.nvidia.cn/",
     "license": "Freeware",
-    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes#/dl.txt",
+    "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/.gitattributes",
     "hash": "52230c560151660e9c9488937d17f7018ca115376b042b67be3ed4c5cffe161d",
     "installer": {
         "script": [
